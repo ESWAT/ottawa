@@ -1,7 +1,7 @@
 {
-  "name": "CEKTOP",
+  "name": "Ottawa Assembly",
   "version": "0.1.4",
-  "description": "A static site generator for GitHub Pages, powered by Grunt & Node.js.",
+  "description": "Tech and startup events happening in Ottawa",
   "main": "Gruntfile.js",
   "private": true,
   "scripts": {
