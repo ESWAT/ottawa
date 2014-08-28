@@ -8,3 +8,13 @@ fetchEvents = ->
       console.log "#{item.summary} - #{item.start.dateTime} - #{item.end.dateTime} @ #{item.location}"
   ), "json"
 
+# Start/stop periodicly fetching events
+startFeedDaemon = ->
+  feedDaemon = setInterval fetchEvents, 60*60*1000 # 1 hour
+
+stopFeedDaemon = ->
+  clearInterval feedDaemon
+
+$ ->
+  fetchEvents()
+  startFeedDaemon()
