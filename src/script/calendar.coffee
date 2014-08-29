@@ -9,3 +9,8 @@ currentDate = new Date()
 Calendar = (month, year) ->
   @month = (if (isNaN(month) or not month?) then currentDate.getMonth() else month)
   @year = (if (isNaN(year) or not year?) then currentDate.getFullYear() else year)
+
+Calendar::createGrid = ->
+  firstDay = new Date @year, @month, 1
+  startingDay = firstDay.getDay()
+  monthLength = DAYS_IN_MONTH[@month]
