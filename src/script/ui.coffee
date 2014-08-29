@@ -1,12 +1,25 @@
 R = React.DOM
 
-DayRow = React.createClass
+CalendarShell = React.createClass
   render: ->
-    R.th null,
-      R.tr null,
-        for day in @props.days
-          R.td null, "#{day}"
+    R.table
+      id: "calendar",
 
+      DayHeading
+        dayHeadings: @props.dayHeadings
+
+DayHeading = React.createClass
+  render: ->
+    R.tr
+      className: "calendar__heading--days",
+
+      for dayHeading in @props.dayHeadings
+        R.th null, "#{dayHeading}"
+
+DayCell = React.createClass
+  render: ->
+    R.td null,
+      R.h3 null, @props.date
 
 DayEntry = React.createClass
   render: ->
