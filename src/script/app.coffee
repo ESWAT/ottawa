@@ -1,7 +1,7 @@
 # CONSTANTS
 FEED_URL      = "https://www.googleapis.com/calendar/v3/calendars/" +
                 "infilexfil.com_ij0amp5h2lir3tlf4sqfpb2geo@group.calendar.google.com" +
-                "/events?key = AIzaSyCJq9lb_y7fnomgGFsDFBRzngucKZL-Ri8"
+                "/events?key=AIzaSyCJq9lb_y7fnomgGFsDFBRzngucKZL-Ri8"
 DAY_LABELS    = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 MONTH_LABELS  = ["January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"]
