@@ -14,3 +14,8 @@ Calendar::createGrid = ->
   firstDay = new Date @year, @month, 1
   startingDay = firstDay.getDay()
   monthLength = DAYS_IN_MONTH[@month]
+  monthLabel = MONTH_LABELS[@month]
+
+  React.renderComponent DayRow(
+    days: DAY_LABELS),
+    document.body

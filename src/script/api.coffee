@@ -4,14 +4,14 @@ FEED_URL  = "https://www.googleapis.com/calendar/v3/calendars/" +
 
 # Fetches events from calendar feed URL
 fetchEvents = ->
-  $.get FEED_URL, ((data)->
-    currentDate = new Date()
-    for item in data.items
-      React.renderComponent DayEntry(
-        summary: item.summary,
-        startDate: item.start.dateTime),
-        document.body
-  ), "json"
+  #$.get FEED_URL, ((data)->
+  #  currentDate = new Date()
+  #  for item in data.items
+  #    React.renderComponent DayEntry(
+  #      summary: item.summary,
+  #      startDate: item.start.dateTime),
+  #      document.body
+  #), "json"
 
 # Start/stop periodicly fetching events
 startFeedDaemon = ->

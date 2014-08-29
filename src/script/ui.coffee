@@ -1,5 +1,13 @@
 R = React.DOM
 
+DayRow = React.createClass
+  render: ->
+    R.th null,
+      R.tr null,
+        for day in @props.days
+          R.td null, "#{day}"
+
+
 DayEntry = React.createClass
   render: ->
     R.div null,
