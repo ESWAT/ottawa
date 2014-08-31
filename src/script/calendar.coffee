@@ -7,23 +7,19 @@ FEED_URL  = "https://www.googleapis.com/calendar/v3/calendars/" +
             "infilexfil.com_ij0amp5h2lir3tlf4sqfpb2geo@group.calendar.google.com" +
             "/events?key=AIzaSyCJq9lb_y7fnomgGFsDFBRzngucKZL-Ri8"
 
-currentDate = new Date()
+currentDate =
 
 Calendar = (month, year) ->
-  @month = (if (isNaN(month) or not month?) then currentDate.getMonth() else month)
-  @year = (if (isNaN(year) or not year?) then currentDate.getFullYear() else year)
+  @month = (if (isNaN(month) or not month?) then new Date().getMonth() else month)
+  @year = (if (isNaN(year) or not year?) then new Date().getFullYear() else year)
 
-Calendar::createGrid = ->
-  firstDay = new Date @year, @month, 1
-  startOffset = firstDay.getDay()
-  monthLength = DAYS_IN_MONTH[@month]
   monthLabel = MONTH_LABELS[@month]
 
   React.renderComponent CalendarShell(
     currentMonth: @month
     dayHeadings: DAY_LABELS
-    monthLength: monthLength
-    startOffset: startOffset
+    monthLength: DAYS_IN_MONTH[@month]
+    startOffset: new Date(@year, @month, 1).getDay()
     url: FEED_URL
     pollInterval: 12 * 60 * 60 * 1000), # 12 hours
     document.body
