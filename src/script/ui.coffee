@@ -1,16 +1,5 @@
 R = React.DOM
 
-PanelShell = React.createClass
-  getInitialState: ->
-    displayedEvent: null
-
-  render: ->
-    R.div
-      id: "js-panel"
-      className: "panel",
-
-      @state.displayedEvent
-
 CalendarShell = React.createClass
   loadCalendarFeed: ->
     $.get @props.url, ((data) ->

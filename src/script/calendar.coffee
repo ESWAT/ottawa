@@ -23,7 +23,3 @@ Calendar = (month, year) ->
     url: FEED_URL
     pollInterval: 12 * 60 * 60 * 1000), # 12 hours
     document.getElementById("calendar")
-
-  React.renderComponent PanelShell(
-  ),
-  document.getElementById("panel")
