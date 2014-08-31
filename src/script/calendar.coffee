@@ -24,5 +24,6 @@ Calendar::createGrid = ->
     dayHeadings: DAY_LABELS
     monthLength: monthLength
     startOffset: startOffset
-    url: FEED_URL),
+    url: FEED_URL
+    pollInterval: 12 * 60 * 60 * 1000, # 12 hours
     document.body

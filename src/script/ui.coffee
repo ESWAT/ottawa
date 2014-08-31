@@ -1,15 +1,19 @@
 R = React.DOM
 
 CalendarShell = React.createClass
-  getInitialState: ->
-    eventsList: []
-
-  componentDidMount: ->
+  loadCalendarFeed: ->
     $.get @props.url, ((data) ->
       if @isMounted()
         @setState
           eventsList: data.items
     ).bind(this)
+  getInitialState: ->
+    eventsList: []
+
+  componentDidMount: ->
+    @loadCalendarFeed()
+    setInterval loadCalendarFeed, @props.pollInterval
+
 
   render: ->
     R.table
