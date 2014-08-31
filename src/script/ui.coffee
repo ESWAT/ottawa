@@ -38,7 +38,10 @@ DayHeadings = React.createClass
 
       R.tr null,
         for dayHeading in @props.dayHeadings
-          R.th null, "#{dayHeading}"
+          R.th
+            className: "calendar__heading-days-label",
+
+            "#{dayHeading}"
 
 WeekGrid = React.createClass
   getCurrentEvents: ->
@@ -96,7 +99,10 @@ DayCell = React.createClass
     R.td
       className: "calendar__day"
 
-      R.h3 null, @props.date
+      R.h3
+        className: "calendar__day-label",
+
+        @props.date
 
       if @props.eventsForDay
         for eventToday in @props.eventsForDay
@@ -117,10 +123,16 @@ EventEntry = React.createClass
       className: "calendar__event",
 
       R.h4
+        className: "calendar__event-label"
         onClick: @showEvent,
 
-        R.span null, "#{moment(@props.eventInfo.start.dateTime).format("H:mm")}"
-        R.span null, "#{@props.eventInfo.summary}"
+        R.span
+          className: "calendar__event-time",
+          "#{moment(@props.eventInfo.start.dateTime).format("H:mm")} "
+
+        R.span
+          className: "calendar__event-summary",
+          "#{@props.eventInfo.summary}"
 
       EventDetails
         eventInfo: @props.eventInfo

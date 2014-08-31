@@ -1,57 +1,58 @@
-.hidden
-  display: none !important
+cBlack = #000
+cGreyDark = #191919
+cGrey = #bbb
+cWhite = #fff
 
-
+*
+  box-sizing: border-box
 
 html
   height: 100%
+  font: 400 13px/20px ff-schulbuch-nord-web, 'helvetica neue', arial, sans-serif
+  -webkit-font-smoothing: antialiased
 
 body
+  padding: 10px
   margin: 0
-  height: 100%
-  font: 300 62.5%/1.5 baskerville, times
-  text-align: center
-  background: black
-  color: white
+  background: cBlack
+  color: cWhite
 
-.container
-  margin: 0 auto
+.calendar
+  table-layout: fixed
+  width: 100%
+  border-collapse: collapse
 
-@media (max-width: 768px)
-  .container
-    padding: 1rem
-  h1
-    font-size: 3.2rem
-  p,a
-    font-size: 1.4rem
-  a
-    padding: 0.25rem 1rem
+.calendar__heading-days-label
+  text-transform: uppercase
+  text-align: right
+  font-size: 11px
+  padding: 0 10px
 
-@media (min-width: 769px)
-  .container
-    width: 32rem
-    position: relative
-    top: 50%
-    -webkit-transform: translateY(-50%)
-    transform: translateY(-50%)
-  h1
-    font-size: 4.8rem
-  p,a
-    font-size: 1.6rem
-  a
-    padding: 0.5rem 2rem
+.calendar__week
+  height: 100px
 
-h1
+.calendar__day
+  border: 1px solid cGreyDark
+  padding: 10px
+  height: 150px
+  vertical-align: top
+
+.calendar__day-label
+  font-size: 13px
+  color: cGrey
   margin: 0
-  font-weight: 300
+  float: right
 
-p
-  margin: 0.5rem 0 2.5rem
+.calendar__event-label
+  font-weight: 400
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+  margin: 0
+  clear: both
 
-a
-  display: inline-block
-  margin: 0 0.5rem 1rem
-  color: black
-  text-decoration: none
-  color: white
-  border: 0.2rem solid white
+.calendar__event-time
+  font-weight: 600
+
+.hidden
+  display: none !important
