@@ -101,5 +101,5 @@ EventEntry = React.createClass
     R.h4
       className: "calendar__event"
 
-      R.span null, "#{new Date(@props.startDate).getHours()}:#{new Date(@props.startDate).getMinutes()}"
+      R.span null, "#{moment(@props.startDate).format("H:mm")}"
       R.span null, "#{@props.summary}"
