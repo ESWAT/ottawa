@@ -12,11 +12,12 @@ Calendar = (month, year) ->
 
 Calendar::createGrid = ->
   firstDay = new Date @year, @month, 1
-  startingDay = firstDay.getDay()
+  startOffset = firstDay.getDay()
   monthLength = DAYS_IN_MONTH[@month]
   monthLabel = MONTH_LABELS[@month]
 
   React.renderComponent CalendarShell(
     dayHeadings: DAY_LABELS
-    monthLength: monthLength),
+    monthLength: monthLength
+    startOffset: startOffset),
     document.body

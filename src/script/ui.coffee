@@ -8,9 +8,12 @@ CalendarShell = React.createClass
       DayHeading
         dayHeadings: @props.dayHeadings
 
-      for days in [1..@props.monthLength] by 7
+      for days in [1..@props.monthLength + @props.startOffset] by 7
+
         WeekRow
-          daysCounted: days
+          startOffset: if days < 8 then @props.startOffset else 0
+          daysCounted: if days < 8 then days else days - @props.startOffset,
+          monthLength: @props.monthLength
 
 DayHeading = React.createClass
   render: ->
@@ -23,9 +26,14 @@ DayHeading = React.createClass
 WeekRow = React.createClass
   render: ->
     R.tbody null,
-      for date in [@props.daysCounted..(@props.daysCounted+7)]
+      if @props.startOffset > 0
+        for i in [1..@props.startOffset]
+          DayCell
+            date: "x"
+
+      for date in [@props.daysCounted..(@props.daysCounted + 6 - @props.startOffset)]
         DayCell
-          date: date
+          date: if date <= @props.monthLength then date else "x"
 
 DayCell = React.createClass
   render: ->
