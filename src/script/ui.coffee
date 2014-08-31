@@ -54,17 +54,10 @@ DayCell = React.createClass
 
       R.h3 null, @props.date
 
-DayEntry = React.createClass
-  render: ->
-    R.div null,
-      R.h3 null, "24"
-      EventEntry
-        summary: @props.summary
-        startDate: @props.startDate
-
-
 EventEntry = React.createClass
   render: ->
-    R.h4 null,
+    R.h4
+      className: "calendar__event"
+
       R.span null, "#{@props.startDate}"
-      R.span null, "Entry: + #{@props.summary}"
+      R.span null, "#{@props.summary}"
