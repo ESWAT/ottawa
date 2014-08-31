@@ -100,9 +100,6 @@ WeekRow = React.createClass
 
 
 DayCell = React.createClass
-  showEvent: (child) ->
-    console.log child.props.eventInfo
-
   render: ->
     R.td
       className: "calendar__day"
@@ -116,13 +113,31 @@ DayCell = React.createClass
             onClick: @showEvent
 
 EventEntry = React.createClass
+  getInitialState: ->
+    showEventDetails: false
+
   showEvent: ->
-    @props.onClick(this)
+    @setState
+      showEventDetails: true
 
   render: ->
-    R.h4
-      className: "calendar__event"
-      onClick: @showEvent,
+    R.div
+      className: "calendar__event",
 
-      R.span null, "#{moment(@props.eventInfo.start.dateTime).format("H:mm")}"
-      R.span null, "#{@props.eventInfo.summary}"
+      R.h4
+        onClick: @showEvent,
+
+        R.span null, "#{moment(@props.eventInfo.start.dateTime).format("H:mm")}"
+        R.span null, "#{@props.eventInfo.summary}"
+
+      EventDetails
+        eventInfo: @props.eventInfo
+        eventClass: if @state.showEventDetails == true then "visible" else "hidden"
+
+EventDetails = React.createClass
+  render: ->
+    R.div
+      className: "calendar__event-details #{@props.eventClass}",
+
+      R.h2 null, "#{@props.eventInfo.summary}"
+      R.p null, "#{moment(@props.eventInfo.start.dateTime).format("H:mm")} - #{moment(@props.eventInfo.end.dateTime).format("H:mm")}"
