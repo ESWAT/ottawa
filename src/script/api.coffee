@@ -3,7 +3,7 @@ FEED_URL  = "https://www.googleapis.com/calendar/v3/calendars/" +
             "/events?key=AIzaSyCJq9lb_y7fnomgGFsDFBRzngucKZL-Ri8"
 
 # Fetches events from calendar feed URL
-fetchEvents = ->
+fetchEvents = (month) ->
   eventsList = []
 
   $.ajax FEED_URL,
@@ -11,7 +11,22 @@ fetchEvents = ->
       for item in data.items
         eventsList.push item
 
+      getCurrentEvents(eventsList, month)
+
   return eventsList
+
+getCurrentEvents = (eventsList, month) ->
+  currentEvents = []
+
+  for currentEvent in eventsList
+    date = new Date(currentEvent.start.dateTime)
+    console.log date.getMonth() + ":" + month
+    if date.getMonth() == month
+      currentEvents.push currentEvent
+
+  console.log eventsList
+  console.log currentEvents
+
 
 # Start/stop periodicly fetching events
 startFeedDaemon = ->

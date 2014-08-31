@@ -1,5 +1,4 @@
-
 $ ->
-  events = fetchEvents()
   cal = new Calendar()
   cal.createGrid()
+  cal.getCurrentEvents()

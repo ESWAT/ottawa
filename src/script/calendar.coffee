@@ -27,3 +27,6 @@ Calendar::createGrid = ->
     monthLength: monthLength
     startOffset: startOffset),
     document.getElementById("js-calendar__weeks")
+
+Calendar::getCurrentEvents = ->
+  eventList = fetchEvents(@month)
