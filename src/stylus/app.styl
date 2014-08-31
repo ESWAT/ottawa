@@ -2,6 +2,7 @@ cBlack = #000
 cGreyDark = #191919
 cGrey = #bbb
 cWhite = #fff
+zModal = 9
 
 *
   box-sizing: border-box
@@ -43,6 +44,9 @@ body
   margin: 0
   float: right
 
+.calendar__event
+  position: relative
+
 .calendar__event-label
   font-weight: 400
   white-space: nowrap
@@ -53,6 +57,16 @@ body
 
 .calendar__event-time
   font-weight: 600
+
+.calendar__event-details
+  position: absolute
+  top: 0
+  left: 0
+  width: 300px
+  height: 200px
+  background-color: rgba(cBlack, 0.9)
+  border: 1px solid cGreyDark
+  z-index: zModal
 
 .hidden
   display: none !important
