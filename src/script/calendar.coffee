@@ -3,6 +3,9 @@ MONTH_LABELS  = ["January", "February", "March", "April",
                 "May", "June", "July", "August",
                 "September", "October", "November", "December"]
 DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+FEED_URL  = "https://www.googleapis.com/calendar/v3/calendars/" +
+            "infilexfil.com_ij0amp5h2lir3tlf4sqfpb2geo@group.calendar.google.com" +
+            "/events?key=AIzaSyCJq9lb_y7fnomgGFsDFBRzngucKZL-Ri8"
 
 currentDate = new Date()
 
@@ -16,17 +19,10 @@ Calendar::createGrid = ->
   monthLength = DAYS_IN_MONTH[@month]
   monthLabel = MONTH_LABELS[@month]
 
-  React.renderComponent CalendarShell(),
-    document.body
-
-  React.renderComponent DayHeadings(
-    dayHeadings: DAY_LABELS),
-    document.getElementById("js-calendar__heading--days")
-
-  React.renderComponent WeekGrid(
+  React.renderComponent CalendarShell(
+    currentMonth: @month
+    dayHeadings: DAY_LABELS
     monthLength: monthLength
-    startOffset: startOffset),
-    document.getElementById("js-calendar__weeks")
-
-Calendar::getCurrentEvents = ->
-  eventList = fetchEvents(@month)
+    startOffset: startOffset
+    url: FEED_URL),
+    document.body
