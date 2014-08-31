@@ -17,5 +17,6 @@ Calendar::createGrid = ->
   monthLabel = MONTH_LABELS[@month]
 
   React.renderComponent CalendarShell(
-    dayHeadings: DAY_LABELS),
+    dayHeadings: DAY_LABELS
+    monthLength: monthLength),
     document.body
