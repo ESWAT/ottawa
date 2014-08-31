@@ -78,8 +78,8 @@ WeekRow = React.createClass
       if @props.startOffset > 0
         for i in [1..@props.startOffset]
           DayCell
-            date: "x"
-            isToday: ""
+            date: ""
+            specialClass: " day--outside"
 
       for date in [@props.daysCounted..(@props.daysCounted + 6 - @props.startOffset)]
         eventsForDay = []
@@ -90,15 +90,20 @@ WeekRow = React.createClass
           if eventDate == date
             eventsForDay.push currentEvent
 
+        # TODO: SO FUGLY
+        specialClass = ""
+        specialClass += if date <= @props.monthLength then "" else " day--outside"
+        specialClass += if date == new Date().getDate() then " day--today" else ""
+
         DayCell
-          date: if date <= @props.monthLength then date else "x"
+          date: if date <= @props.monthLength then date else ""
           eventsForDay: eventsForDay
-          isToday: if date == new Date().getDate() then " day--today" else ""
+          specialClass: specialClass
 
 DayCell = React.createClass
   render: ->
     R.td
-      className: "calendar__day#{@props.isToday}"
+      className: "calendar__day#{@props.specialClass}"
 
       R.h3
         className: "calendar__day-label",

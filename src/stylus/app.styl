@@ -2,6 +2,7 @@ cBlack = #000
 cGreyDark = #191919
 cGrey = #bbb
 cWhite = #fff
+cRed = #f00
 zModal = 9
 
 *
@@ -39,7 +40,11 @@ body
   vertical-align: top
 
 .day--today
-  background-color: cGreyDark
+  .calendar__day-label
+    color: cRed
+
+.day--outside
+  background: rgba(cRed, .05)
 
 .calendar__day-label
   font-size: 13px
@@ -55,7 +60,7 @@ body
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
-  margin: 0
+  margin: 0 0 5px
   clear: both
 
 .calendar__event-time
