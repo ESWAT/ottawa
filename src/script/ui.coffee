@@ -124,5 +124,5 @@ EventEntry = React.createClass
       className: "calendar__event"
       onClick: @showEvent,
 
-      R.span null, "#{moment(@props.eventInfo.startDate).format("H:mm")}"
+      R.span null, "#{moment(@props.eventInfo.start.dateTime).format("H:mm")}"
       R.span null, "#{@props.eventInfo.summary}"
