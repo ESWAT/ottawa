@@ -1,12 +1,15 @@
 R = React.DOM
 
 PanelShell = React.createClass
+  getInitialState: ->
+    displayedEvent: null
+
   render: ->
     R.div
       id: "js-panel"
       className: "panel",
 
-      "herp"
+      @state.displayedEvent
 
 CalendarShell = React.createClass
   loadCalendarFeed: ->
@@ -15,6 +18,7 @@ CalendarShell = React.createClass
         @setState
           eventsList: data.items
     ).bind(this)
+
   getInitialState: ->
     eventsList: []
 
@@ -96,6 +100,9 @@ WeekRow = React.createClass
 
 
 DayCell = React.createClass
+  showEvent: (child) ->
+    console.log child.props.eventInfo
+
   render: ->
     R.td
       className: "calendar__day"
@@ -105,17 +112,17 @@ DayCell = React.createClass
       if @props.eventsForDay
         for eventToday in @props.eventsForDay
           EventEntry
-            startDate: eventToday.start.dateTime
-            summary: eventToday.summary
+            eventInfo: eventToday
+            onClick: @showEvent
 
 EventEntry = React.createClass
   showEvent: ->
-    console.log "clicked"
+    @props.onClick(this)
 
   render: ->
     R.h4
       className: "calendar__event"
       onClick: @showEvent,
 
-      R.span null, "#{moment(@props.startDate).format("H:mm")}"
-      R.span null, "#{@props.summary}"
+      R.span null, "#{moment(@props.eventInfo.startDate).format("H:mm")}"
+      R.span null, "#{@props.eventInfo.summary}"
