@@ -22,4 +22,8 @@ Calendar = (month, year) ->
     startOffset: new Date(@year, @month, 1).getDay()
     url: FEED_URL
     pollInterval: 12 * 60 * 60 * 1000), # 12 hours
-    document.body
+    document.getElementById("calendar")
+
+  React.renderComponent PanelShell(
+  ),
+  document.getElementById("panel")
