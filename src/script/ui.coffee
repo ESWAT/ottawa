@@ -3,10 +3,28 @@ R = React.DOM
 CalendarShell = React.createClass
   render: ->
     R.table
-      id: "calendar",
+      id: "js-calendar"
+      className: "calendar",
 
-      DayHeading
-        dayHeadings: @props.dayHeadings
+      R.thead
+        id: "js-calendar__heading--days"
+
+      R.tbody
+        id: "js-calendar__weeks"
+
+DayHeading = React.createClass
+  render: ->
+    R.tr
+      id: "js-calendar__heading--days"
+      className: "calendar__heading--days",
+
+      for dayHeading in @props.dayHeadings
+        R.th null, "#{dayHeading}"
+
+WeekGrid = React.createClass
+  render: ->
+    R.tbody
+      id: "js-calendar__weeks"
 
       for days in [1..@props.monthLength + @props.startOffset] by 7
 
@@ -15,17 +33,11 @@ CalendarShell = React.createClass
           daysCounted: if days < 8 then days else days - @props.startOffset,
           monthLength: @props.monthLength
 
-DayHeading = React.createClass
-  render: ->
-    R.tr
-      className: "calendar__heading--days",
-
-      for dayHeading in @props.dayHeadings
-        R.th null, "#{dayHeading}"
-
 WeekRow = React.createClass
   render: ->
-    R.tbody null,
+    R.tr
+      id: "js-calendar__week"
+      className: "calendar__week",
       if @props.startOffset > 0
         for i in [1..@props.startOffset]
           DayCell
