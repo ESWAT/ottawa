@@ -52,23 +52,26 @@ DayHeadings = React.createClass
           R.th null, "#{dayHeading}"
 
 WeekGrid = React.createClass
-  getInitialState: ->
-    currentEvents: []
+  getCurrentEvents: ->
+    eventResults = []
 
-  render: ->
     for currentEvent in @props.eventsList
       eventMonth = new Date(currentEvent.start.dateTime).getMonth()
       if eventMonth == @props.currentMonth
-        @state.currentEvents.push currentEvent
+        eventResults.push currentEvent
+
+    return eventResults
+
+  render: ->
+    currentEvents = @getCurrentEvents()
 
     R.tbody
       id: "js-calendar__weeks"
 
-
       for days in [1..@props.monthLength + @props.startOffset] by 7
 
         WeekRow
-          currentEvents: @state.currentEvents
+          currentEvents: currentEvents
           startOffset: if days < 8 then @props.startOffset else 0
           daysCounted: if days < 8 then days else days - @props.startOffset,
           monthLength: @props.monthLength
@@ -140,4 +143,5 @@ EventDetails = React.createClass
       className: "calendar__event-details #{@props.eventClass}",
 
       R.h2 null, "#{@props.eventInfo.summary}"
-      R.p null, "#{moment(@props.eventInfo.start.dateTime).format("H:mm")} - #{moment(@props.eventInfo.end.dateTime).format("H:mm")}"
+      R.p null, "#{moment(@props.eventInfo.start.dateTime).format("H:mm")} - \
+        #{moment(@props.eventInfo.end.dateTime).format("H:mm")}"
