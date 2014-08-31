@@ -12,7 +12,7 @@ CalendarShell = React.createClass
 
   componentDidMount: ->
     @loadCalendarFeed()
-    setInterval loadCalendarFeed, @props.pollInterval
+    setInterval @loadCalendarFeed, @props.pollInterval
 
 
   render: ->
@@ -101,9 +101,12 @@ DayCell = React.createClass
             summary: eventToday.summary
 
 EventEntry = React.createClass
+  showEvent: ->
+    console.log "clicked"
   render: ->
     R.h4
       className: "calendar__event"
+      onclick: "showEvent()",
 
       R.span null, "#{moment(@props.startDate).format("H:mm")}"
       R.span null, "#{@props.summary}"
