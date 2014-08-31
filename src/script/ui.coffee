@@ -79,6 +79,7 @@ WeekRow = React.createClass
         for i in [1..@props.startOffset]
           DayCell
             date: "x"
+            isToday: ""
 
       for date in [@props.daysCounted..(@props.daysCounted + 6 - @props.startOffset)]
         eventsForDay = []
