@@ -19,7 +19,7 @@ Calendar::createGrid = ->
   React.renderComponent CalendarShell
     document.body
 
-  React.renderComponent DayHeading(
+  React.renderComponent DayHeadings(
     dayHeadings: DAY_LABELS),
     document.getElementById("js-calendar__heading--days")
 

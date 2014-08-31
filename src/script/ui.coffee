@@ -12,7 +12,7 @@ CalendarShell = React.createClass
       R.tbody
         id: "js-calendar__weeks"
 
-DayHeading = React.createClass
+DayHeadings = React.createClass
   render: ->
     R.tr
       id: "js-calendar__heading--days"
