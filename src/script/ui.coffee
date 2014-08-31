@@ -103,10 +103,11 @@ DayCell = React.createClass
 EventEntry = React.createClass
   showEvent: ->
     console.log "clicked"
+
   render: ->
     R.h4
       className: "calendar__event"
-      onclick: "showEvent()",
+      onClick: @showEvent,
 
       R.span null, "#{moment(@props.startDate).format("H:mm")}"
       R.span null, "#{@props.summary}"
