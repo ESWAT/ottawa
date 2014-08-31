@@ -92,12 +92,12 @@ WeekRow = React.createClass
         DayCell
           date: if date <= @props.monthLength then date else "x"
           eventsForDay: eventsForDay
-
+          isToday: if date == new Date().getDate() then " day--today" else ""
 
 DayCell = React.createClass
   render: ->
     R.td
-      className: "calendar__day"
+      className: "calendar__day#{@props.isToday}"
 
       R.h3
         className: "calendar__day-label",
