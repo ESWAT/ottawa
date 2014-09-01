@@ -16,13 +16,30 @@ html
 body
   padding: 10px
   margin: 0
+  height: 100%
   background: cBlack
   color: cWhite
 
-.calendar
+.calendar-shell
+  height: 100%
+
+.calendar,
+.calendar__week
   table-layout: fixed
   width: 100%
+  height: 100%
   border-collapse: collapse
+
+.calendar__week
+  position: relative
+  margin-top: -1px
+
+.calendar__heading-days
+  position: relative
+  top: 3px
+
+.calendar--week-wrap:first-of-type
+  border-top: 1px solid cGreyDark
 
 .calendar__heading-days-label
   text-transform: uppercase
@@ -30,13 +47,10 @@ body
   font-size: 11px
   padding: 0 10px
 
-.calendar__week
-  height: 100px
-
 .calendar__day
   border: 1px solid cGreyDark
+  border-top: 0
   padding: 10px
-  height: 150px
   vertical-align: top
 
 .day--today
