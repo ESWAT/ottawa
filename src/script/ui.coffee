@@ -66,7 +66,7 @@ WeekGrid = React.createClass
         for days in [1..@props.monthLength + @props.startOffset] by 7
 
           WeekRow
-            rowHeight: 16.6666 + "%"
+            rowHeight: 100 / Math.ceil(((@props.monthLength + @props.startOffset) / 7)) + "%"
             currentEvents: currentEvents
             startOffset: if days < 8 then @props.startOffset else 0
             daysCounted: if days < 8 then days else days - @props.startOffset,
