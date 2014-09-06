@@ -189,6 +189,18 @@ EventDetails = React.createClass
     R.div
       className: "calendar__event-details",
 
-      R.h2 null, "#{@props.eventInfo.summary}"
-      R.p null, "#{moment(@props.eventInfo.start.dateTime).format("H:mm")} - \
+      R.h2
+        className: "event-details__title",
+
+        "#{@props.eventInfo.summary}"
+
+      R.p
+        className: "event-details__date",
+
+        "#{moment(@props.eventInfo.start.dateTime).format("H:mm")} - \
         #{moment(@props.eventInfo.end.dateTime).format("H:mm")}"
+
+      R.p
+        className: "event-details__description"
+
+        "#{@props.eventInfo.description}"
