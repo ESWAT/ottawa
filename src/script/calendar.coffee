@@ -7,8 +7,6 @@ FEED_URL  = "https://www.googleapis.com/calendar/v3/calendars/" +
             "infilexfil.com_ij0amp5h2lir3tlf4sqfpb2geo@group.calendar.google.com" +
             "/events?key=AIzaSyCJq9lb_y7fnomgGFsDFBRzngucKZL-Ri8"
 
-currentDate =
-
 Calendar = (month, year) ->
   @month = (if (isNaN(month) or not month?) then new Date().getMonth() else month)
   @year = (if (isNaN(year) or not year?) then new Date().getFullYear() else year)

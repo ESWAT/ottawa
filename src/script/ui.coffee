@@ -157,12 +157,6 @@ EventEntry = React.createClass
         @setState
           handledClick: false
 
-    # PSEUDO: unless showEventDetails == true and srcElement != calendar__event-details
-    # if e.target.className != 'calendar__event-label'
-    #   @setState
-    #     showEventDetails: false
-    #   console.log @state.showEventDetails
-
   render: ->
     R.div
       className: "calendar__event",
