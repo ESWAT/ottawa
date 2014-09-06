@@ -128,11 +128,40 @@ DayCell = React.createClass
 
 EventEntry = React.createClass
   getInitialState: ->
+    handledClick: false
     showEventDetails: false
 
-  showEvent: ->
+  componentDidMount: ->
+    window.addEventListener 'click', @hideEvent
+
+  showEvent: (e) ->
     @setState
+      handledClick: true
       showEventDetails: true
+
+  hideEvent: (e) ->
+    offsetName = e.target.offsetParent.className
+    targetName = e.target.className
+    compareName = "calendar__event-details"
+
+    if offsetName != compareName && targetName != compareName
+      # target is not event details window
+
+      if @state.showEventDetails && @state.handledClick != true
+        # window is showing but not from first activation
+        @setState
+          showEventDetails: false
+
+      if @state.handledClick
+        # no-longer first activation after first click
+        @setState
+          handledClick: false
+
+    # PSEUDO: unless showEventDetails == true and srcElement != calendar__event-details
+    # if e.target.className != 'calendar__event-label'
+    #   @setState
+    #     showEventDetails: false
+    #   console.log @state.showEventDetails
 
   render: ->
     R.div
@@ -150,14 +179,15 @@ EventEntry = React.createClass
           className: "calendar__event-summary",
           "#{@props.eventInfo.summary}"
 
-      EventDetails
-        eventInfo: @props.eventInfo
-        eventClass: if @state.showEventDetails == true then "visible" else "hidden"
+      if @state.showEventDetails
+
+        EventDetails
+          eventInfo: @props.eventInfo
 
 EventDetails = React.createClass
   render: ->
     R.div
-      className: "calendar__event-details #{@props.eventClass}",
+      className: "calendar__event-details",
 
       R.h2 null, "#{@props.eventInfo.summary}"
       R.p null, "#{moment(@props.eventInfo.start.dateTime).format("H:mm")} - \
