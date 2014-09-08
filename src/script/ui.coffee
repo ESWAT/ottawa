@@ -1,5 +1,9 @@
 R = React.DOM
 
+
+
+
+
 CalendarShell = React.createClass
   loadCalendarFeed: ->
     $.get @props.url, ((data) ->
@@ -8,8 +12,10 @@ CalendarShell = React.createClass
           eventsList: data.items
     ).bind(this)
 
+
   getInitialState: ->
     eventsList: []
+
 
   componentDidMount: ->
     @loadCalendarFeed()
@@ -21,16 +27,20 @@ CalendarShell = React.createClass
       id: "calendar"
       className: "calendar",
 
-      DayHeadings
+      DaysOfWeek
         dayHeadings: @props.dayHeadings
 
-      WeekGrid
+      DayGrid
         currentMonth: @props.currentMonth
         monthLength: @props.monthLength
         startOffset: @props.startOffset
         eventsList: @state.eventsList
 
-DayHeadings = React.createClass
+
+
+
+
+DaysOfWeek = React.createClass
   render: ->
     R.thead
       className: "days-of-week",
@@ -42,7 +52,11 @@ DayHeadings = React.createClass
 
             "#{dayHeading}"
 
-WeekGrid = React.createClass
+
+
+
+
+DayGrid = React.createClass
   getCurrentEvents: ->
     eventResults = []
 
@@ -52,6 +66,7 @@ WeekGrid = React.createClass
         eventResults.push currentEvent
 
     return eventResults
+
 
   render: ->
     currentEvents = @getCurrentEvents()
@@ -70,6 +85,11 @@ WeekGrid = React.createClass
             startOffset: if days < 8 then @props.startOffset else 0
             daysCounted: if days < 8 then days else days - @props.startOffset,
             monthLength: @props.monthLength
+
+
+
+
+
 
 WeekRow = React.createClass
   render: ->
@@ -108,6 +128,10 @@ WeekRow = React.createClass
             eventsForDay: eventsForDay
             specialClass: specialClass
 
+
+
+
+
 DayCell = React.createClass
   render: ->
     R.td
@@ -124,18 +148,25 @@ DayCell = React.createClass
             eventInfo: eventToday
             onClick: @showEvent
 
+
+
+
+
 EventEntry = React.createClass
   getInitialState: ->
     handledClick: false
     showEventDetails: false
 
+
   componentDidMount: ->
     window.addEventListener 'click', @hideEvent
+
 
   showEvent: (e) ->
     @setState
       handledClick: true
       showEventDetails: true
+
 
   hideEvent: (e) ->
     offsetName = e.target.offsetParent.className
@@ -154,6 +185,7 @@ EventEntry = React.createClass
         # no-longer first activation after first click
         @setState
           handledClick: false
+
 
   render: ->
     R.div
@@ -175,6 +207,10 @@ EventEntry = React.createClass
 
         EventDetails
           eventInfo: @props.eventInfo
+
+
+
+
 
 EventDetails = React.createClass
   render: ->
