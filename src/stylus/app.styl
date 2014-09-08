@@ -32,52 +32,53 @@ h1
   height: 88%
 
 .calendar,
-.calendar__week
+.week
   table-layout: fixed
   width: 100%
   height: 100%
   border-collapse: collapse
 
-.calendar__week
-  position: relative
-  margin-top: -1px
-
-.calendar__heading-days
+.days-of-week
   position: relative
   top: 3px
 
-.calendar--week-wrap:first-of-type
-  border-top: 1px solid cGreyDark
-
-.calendar__heading-days-label
+.days-of-week--label
   text-transform: uppercase
   text-align: right
   font-size: 11px
   padding: 0 10px
 
-.calendar__day
+.week-wrap:first-of-type
+  border-top: 1px solid cGreyDark
+
+.week
+  position: relative
+  margin-top: -1px
+
+.day
   border: 1px solid cGreyDark
   border-top: 0
   padding: 10px
   vertical-align: top
 
-.day--today
-  .calendar__day-label
-    color: cRed
-
-.day--outside
-  background: rgba(cRed, .05)
-
-.calendar__day-label
+.day-label
   font-size: 13px
   color: cGrey
   margin: 0
   float: right
 
-.calendar__event
+.day--today
+
+  ._day-label
+    color: cRed
+
+.day--outside
+  background: rgba(cRed, .05)
+
+.event
   position: relative
 
-.calendar__event-label
+.event__label
   font-weight: 400
   white-space: nowrap
   overflow: hidden
@@ -85,10 +86,10 @@ h1
   margin: 0 0 5px
   clear: both
 
-.calendar__event-time
+.event__time
   font-weight: 600
 
-.calendar__event-details
+.event-details
   position: absolute
   top: 0
   left: 0

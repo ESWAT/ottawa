@@ -18,7 +18,7 @@ CalendarShell = React.createClass
 
   render: ->
     R.table
-      id: "js-calendar"
+      id: "calendar"
       className: "calendar",
 
       DayHeadings
@@ -33,13 +33,12 @@ CalendarShell = React.createClass
 DayHeadings = React.createClass
   render: ->
     R.thead
-      id: "js-calendar__heading--days"
-      className: "calendar__heading--days",
+      className: "days-of-week",
 
       R.tr null,
         for dayHeading in @props.dayHeadings
           R.th
-            className: "calendar__heading-days-label",
+            className: "days-of-week--label",
 
             "#{dayHeading}"
 
@@ -58,7 +57,7 @@ WeekGrid = React.createClass
     currentEvents = @getCurrentEvents()
 
     R.tr
-      id: "js-calendar__weeks"
+      id: "day-grid"
 
       R.td
         colSpan: 7,
@@ -78,12 +77,11 @@ WeekRow = React.createClass
       height: @props.rowHeight
 
     R.div
-      className: "calendar--week-wrap"
+      className: "week-wrap"
       style: styleRules,
 
       R.table
-        id: "js-calendar__week"
-        className: "calendar__week",
+        className: "week",
 
         if @props.startOffset > 0
           for i in [1..@props.startOffset]
@@ -113,10 +111,10 @@ WeekRow = React.createClass
 DayCell = React.createClass
   render: ->
     R.td
-      className: "calendar__day#{@props.specialClass}",
+      className: "day#{@props.specialClass}",
 
       R.h3
-        className: "calendar__day-label",
+        className: "day-label",
 
         @props.date
 
@@ -142,7 +140,7 @@ EventEntry = React.createClass
   hideEvent: (e) ->
     offsetName = e.target.offsetParent.className
     targetName = e.target.className
-    compareName = "calendar__event-details"
+    compareName = "event-details"
 
     if offsetName != compareName && targetName != compareName
       # target is not event details window
@@ -159,18 +157,18 @@ EventEntry = React.createClass
 
   render: ->
     R.div
-      className: "calendar__event",
+      className: "event",
 
       R.h4
-        className: "calendar__event-label"
+        className: "event__label"
         onClick: @showEvent,
 
         R.span
-          className: "calendar__event-time",
+          className: "event__time",
           "#{moment(@props.eventInfo.start.dateTime).format("H:mm")} "
 
         R.span
-          className: "calendar__event-summary",
+          className: "event__summary",
           "#{@props.eventInfo.summary}"
 
       if @state.showEventDetails
@@ -181,7 +179,7 @@ EventEntry = React.createClass
 EventDetails = React.createClass
   render: ->
     R.div
-      className: "calendar__event-details",
+      className: "event-details",
 
       R.h2
         className: "event-details__title",
