@@ -1,6 +1,6 @@
-# Ottawa Assembly
+# Ottawa Tech Events
 
-[Ottawa Assembly](http://ottawa.infilexfil.com/) is a calendar of tech and startup events happening in Ottawa, Canada. Maintained by [ESWAT](http://github.com/ESWAT/) and friends.
+[Ottawa Tech Events](http://ottawa.infilexfil.com/) is a calendar of tech and startup events happening in Ottawa, Canada. Maintained by [ESWAT](http://github.com/ESWAT/) and friends.
 
 This is a [React](http://facebook.github.io/react/)-based web app that pulls the XML version of the Ottawa Tech Events calendar hosted by Google. Files are generated using [CEKTOP](http://eswat.ca/cektop).
 
