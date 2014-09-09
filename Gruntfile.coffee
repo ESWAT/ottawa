@@ -28,7 +28,6 @@ module.exports = (grunt) ->
     "gh-pages":
       options:
         base: "release"
-        branch: "master"
 
       src: ["**/*"]
 
