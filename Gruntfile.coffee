@@ -81,6 +81,14 @@ module.exports = (grunt) ->
           dest: "release/assets/"
         ]
 
+      cname:
+        files: [
+          expand: true
+          flatten: true
+          src: ["CNAME"]
+          dest: "release/"
+        ]
+
     imagemin:
       release:
         files: [
@@ -205,6 +213,7 @@ module.exports = (grunt) ->
     "concurrent:release"
     "concurrent:optimize"
     "clean:tmp"
+    "copy:cname"
   ]
 
   # Deploy to GitHub Pages
@@ -214,5 +223,6 @@ module.exports = (grunt) ->
     "concurrent:release"
     "concurrent:optimize"
     "clean:tmp"
+    "copy:cname"
     "gh-pages"
   ]
