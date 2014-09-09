@@ -9,7 +9,7 @@ MonthHeading = React.createClass
     R.span
       class: "month-heading",
 
-      "#{@props.monthLabel}"
+      "#{@props.monthLabel} #{new Date().getFullYear()}"
 
 
 CalendarShell = React.createClass

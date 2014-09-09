@@ -7,15 +7,18 @@ html(lang="en")
     meta(name="author", content="#{author}")
     meta(name="description", content="#{description}")
     link(rel="stylesheet", href="css/app.css")
+    link(rel="stylesheet" href="https://fontastic.s3.amazonaws.com/eNhnFhSXNVMSix7deU2odb/icons.css")
     script(src="//use.typekit.net/wik2btu.js")
     script.
       try{Typekit.load();}catch(e){}
   body
     #primer.primer
-      h1 Ottawa Startup/Tech Events
-      h2
+      h1.primer--title Ottawa Tech Events
+      h2.primer--sub-title
         = "for "
         span#month-heading
+      i.inex-logo
+      a.calendar-link(href="https://www.google.com/calendar/embed?src=infilexfil.com_ij0amp5h2lir3tlf4sqfpb2geo%40group.calendar.google.com&ctz=America/Toronto") Google Calendar
 
     #calendar.calendar-shell
 
