@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 cBlack    = #000
-cGreyDark = #191919
+cGreyDark = #111
 cGrey     = #bbb
 cWhite    = #fff
 cRed      = #f00
@@ -48,7 +48,7 @@ h1
 
 .primer
   padding: 10px
-  height: 12%
+  height: 100px
 
 
 
@@ -60,7 +60,7 @@ h1
 
 .calendar-shell
   padding: 10px
-  height: 88%
+  height: calc(100% - 100px)
 
 
 .calendar,
@@ -101,7 +101,7 @@ h1
 
 .day-label
   font-size: 13px
-  color: cGrey
+  color: cWhite
   margin: 0
   float: right
 
@@ -113,7 +113,7 @@ h1
 
 
 .day--outside
-  background: rgba(cRed, .05)
+  background: rgba(cGreyDark, .5)
 
 
 .event
@@ -127,6 +127,10 @@ h1
   text-overflow: ellipsis
   margin: 0 0 5px
   clear: both
+
+  &:hover
+    color: cRed
+    cursor: pointer
 
 
 .event__time

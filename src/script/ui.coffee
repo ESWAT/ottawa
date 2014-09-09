@@ -4,6 +4,14 @@ R = React.DOM
 
 
 
+MonthHeading = React.createClass
+  render: ->
+    R.span
+      class: "month-heading",
+
+      "#{@props.monthLabel}"
+
+
 CalendarShell = React.createClass
   loadCalendarFeed: ->
     $.get @props.url, ((data) ->

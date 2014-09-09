@@ -11,7 +11,9 @@ Calendar = (month, year) ->
   @month = (if (isNaN(month) or not month?) then new Date().getMonth() else month)
   @year = (if (isNaN(year) or not year?) then new Date().getFullYear() else year)
 
-  monthLabel = MONTH_LABELS[@month]
+  React.renderComponent MonthHeading(
+    monthLabel: MONTH_LABELS[@month]),
+    document.getElementById("month-heading")
 
   React.renderComponent CalendarShell(
     currentMonth: @month
