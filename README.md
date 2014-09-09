@@ -4,6 +4,8 @@
 
 This is a [React](http://facebook.github.io/react/)-based web app that pulls the XML version of the Ottawa Tech Events calendar hosted by Google. Files are generated using [CEKTOP](http://eswat.ca/cektop).
 
+It will remain very much a work-in-progress until I can work out some of the finer details: proper display of multi-day events, cleaner presentation of event summaries, making sure event details fit in the viewport, etc.
+
 ## Start
 
 You can see the generated files in the `gh-pages` branch. But to hack on your own you will need [Node.js](http://nodejs.org/download/).
