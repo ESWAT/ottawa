@@ -122,20 +122,24 @@ DayGrid = React.createClass
   render: ->
     currentEvents = @getCurrentEvents()
 
-    R.tr
-      id: "day-grid"
+    R.tbody
+      className: "day-grid",
 
-      R.td
-        colSpan: 7,
+      R.tr
+        className: "day-grid",
 
-        for days in [1..@props.monthLength + @props.startOffset] by 7
+        R.td
+          className: "day-grid"
+          colSpan: 7,
 
-          WeekRow
-            rowHeight: 100 / Math.ceil(((@props.monthLength + @props.startOffset) / 7)) + "%"
-            currentEvents: currentEvents
-            startOffset: if days < 8 then @props.startOffset else 0
-            daysCounted: if days < 8 then days else days - @props.startOffset,
-            monthLength: @props.monthLength
+          for days in [1..@props.monthLength + @props.startOffset] by 7
+
+            WeekRow
+              rowHeight: 100 / Math.ceil(((@props.monthLength + @props.startOffset) / 7)) + "%"
+              currentEvents: currentEvents
+              startOffset: if days < 8 then @props.startOffset else 0
+              daysCounted: if days < 8 then days else days - @props.startOffset,
+              monthLength: @props.monthLength
 
 
 
