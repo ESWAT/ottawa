@@ -21,7 +21,7 @@ module.exports = (grunt) ->
         "copy"
       ]
       optimize: [
-        # "uglify"
+        "uglify"
         "newer:imagemin"
       ]
 
@@ -55,7 +55,7 @@ module.exports = (grunt) ->
 
       release:
         files:
-          "release/js/app.js": ["src/script/*.coffee"]
+          "release/tmp/app.js": ["src/script/*.coffee"]
 
     coffeelint:
       app: ['src/script/*.coffee']
