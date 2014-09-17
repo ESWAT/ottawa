@@ -56,6 +56,8 @@ module.exports = (grunt) ->
       release:
         files:
           "release/tmp/app.js": ["src/script/*.coffee"]
+        options:
+          join: true
 
     coffeelint:
       app: ['src/script/*.coffee']
