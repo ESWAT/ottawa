@@ -233,7 +233,7 @@ EventEntry = React.createClass
 
 EventDetails = React.createClass
   getInitialState: ->
-    elOffset: "40px"
+    elOffset: "20px"
 
   componentDidMount: ->
     viewBox = document.body.getBoundingClientRect()
