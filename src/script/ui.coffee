@@ -12,6 +12,9 @@ MonthHeading = React.createClass
       "#{@props.monthLabel} #{new Date().getFullYear()}"
 
 
+
+
+
 CalendarShell = React.createClass
   loadCalendarFeed: ->
     $.get @props.url, ((data) ->
