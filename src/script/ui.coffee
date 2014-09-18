@@ -176,6 +176,8 @@ EventEntry = React.createClass
   componentDidMount: ->
     window.addEventListener 'click', @hideEvent
 
+    console.log @refs.label.getDOMNode().offsetHeight
+
 
   showEvent: (e) ->
     @setState
@@ -208,6 +210,7 @@ EventEntry = React.createClass
 
       R.h4
         className: "event__label"
+        ref: "label"
         onClick: @showEvent,
 
         R.span
@@ -222,6 +225,7 @@ EventEntry = React.createClass
 
         EventDetails
           eventInfo: @props.eventInfo
+          titleHeight: @refs.label.getDOMNode().height
 
 
 
@@ -229,22 +233,23 @@ EventEntry = React.createClass
 
 EventDetails = React.createClass
   getInitialState: ->
-    threshDiff: 0
+    elOffset: "40px"
 
   componentDidMount: ->
     viewBox = document.body.getBoundingClientRect()
     elBox = @getDOMNode().getBoundingClientRect()
 
     if viewBox.bottom < elBox.bottom
+      elHeight = Math.ceil(elBox.bottom - elBox.top)
       console.log "out of bounds by #{Math.ceil(viewBox.bottom - elBox.bottom)}"
 
       @setState
-        threshDiff: Math.ceil(viewBox.bottom - elBox.bottom) - 40
+        elOffset: -elHeight
 
   render: ->
     R.div
       className: "event-details",
-      style: {"top" : "#{@state.threshDiff}"}
+      style: {"top" : "#{@state.elOffset}"}
 
       R.h2
         className: "event-details__title",
