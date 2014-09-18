@@ -228,9 +228,23 @@ EventEntry = React.createClass
 
 
 EventDetails = React.createClass
+  getInitialState: ->
+    threshDiff: 0
+
+  componentDidMount: ->
+    viewBox = document.body.getBoundingClientRect()
+    elBox = @getDOMNode().getBoundingClientRect()
+
+    if viewBox.bottom < elBox.bottom
+      console.log "out of bounds by #{Math.ceil(viewBox.bottom - elBox.bottom)}"
+
+      @setState
+        threshDiff: Math.ceil(viewBox.bottom - elBox.bottom) - 40
+
   render: ->
     R.div
       className: "event-details",
+      style: {"top" : "#{@state.threshDiff}"}
 
       R.h2
         className: "event-details__title",
